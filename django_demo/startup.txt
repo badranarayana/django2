@@ -1,0 +1,159 @@
+# creating Dev environment to work with django
+
+
+tech stack:
+--> python
+--> DJango
+--> mysql
+
+UI
+HTML css, js
+
+
+---------------------------------------------------------
+step #1: create virtual environment of python
+
+$  virtualenv mydjangoenv
+
+
+# step #2: activate environment
+$  .\mydjangoenv\Scripts\activate
+
+
+# step #3 : install django package
+
+$  pip install django
+
+
+lets very django import working or not
+
+--> python
+--> import django
+--> django.get_version()
+--> exit()
+
+-----------------------------------------------
+
+
+# lets create django project by using django admin command
+
+$ django-admin startproject django_demo
+
+
+
+# lets run django server
+
+$ python manage.py runserver
+
+apply migration
+
+$ python manage.py migrate
+
+
+# lets create super user to access django admin app
+$ python manage.py createsuperuser
+
+
+user/pass: admin/admin@123
+
+
+-----------------
+step #2:
+
+how to create apps in django and work with apps?
+
+django project
+  --> collection of apps(built-in apps)
+  --> contact
+
+
+# create app in django project with manage.py command
+
+$ python manage.py startapp contact
+
+above command creates app(contact) folder inside project
+
+# next step is register newly created app contact in django installed_apps list in settings.py
+
+
+
+# lets create contact model for db table
+URL --> python function(view) --> db(model) --> html(template)
+
+
+topic #1 : models
+model is a python class which the represents the db table,
+we use model class to interact with data in database table
+
+how do we create a model in django?
+ans: Django provides built in class called Model.
+ We can create new class by extending/inheriting from Model class
+
+ from django.db import models
+
+
+ class Contact(models.Model):
+     pass
+
+
+# how do we sync django models with database?
+
+step# 1
+$ python manage.py makemigrations
+
+-> the above command creates python migration file in side migrations folder
+
+step #2:
+ $ python manage.py migrate
+ this command looks at migrations folder and apply if unapplied migrations exits
+
+
+# CRUD operations
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
