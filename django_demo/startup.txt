@@ -109,6 +109,114 @@ step #2:
 
 
 # CRUD operations
+# c --> create/insert
+# R --> read/Select
+# U --> update
+# D --> Delete
+
+# plain sql
+# create
+  insert into table(...)
+# read
+  select * from table
+# update
+  update table_name set col = 'val' where id=1
+# delete
+  delete from table_name where id=2
+
+
+ORM --> object relational mapper
+
+app_name: contact
+
+model : contact(attributes)
+table_name : contact_contact(columns)
+
+#object = contact()
+------------------------
+
+how do we test django crud operations?
+
+$ python manage.py shell
+
+
+(mydjangoenv) C:\Users\91901\Desktop\django2\django_demo>python manage.py shell
+Python 3.10.1 (tags/v3.10.1:2cd268a, Dec  6 2021, 19:10:37) [MSC v.1929 64 bit (AMD64)] on win32
+Type "help", "copyright", "credits" or "license" for more information.
+(InteractiveConsole)
+
+>>> from contact.models import Contact
+>>> # lets create record in db
+>>> obj = Contact(name='yeswant', mobile_number='856223333', date_of_birth='1990-02-23', email='yes@gmail.com', location='hyd')
+>>> # lets save the data into db
+>>> obj.save()
+
+>>> # read data from db
+>>> contacts = Contact.objects.all()  # select * from contact
+>>> contacts
+<QuerySet [<Contact: Contact object (1)>]>
+>>> contacts[0]
+<Contact: Contact object (1)>
+>>> contacts[0].name
+'yeswant'
+>>> contacts[0].mobile_number
+'856223333'
+>>> contacts[0].email
+'yes@gmail.com'
+
+>>> obj = Contact(name='ram', mobile_number='856223334', date_of_birth='1990-03-23', email='ram@gmail.com', location='hyd')
+>>> obj.save()
+>>> contacts = Contact.objects.all()  # select * from contact
+>>> contacts
+<QuerySet [<Contact: Contact object (1)>, <Contact: Contact object (2)>]>
+
+>>> # name of each record
+>>> contacts[0]
+<Contact: Contact object (1)>
+>>> contacts[0].name
+'yeswant'
+>>> contacts[1].name
+'ram'
+
+>>> # lets update ram email address
+>>> # fecth the ram record from db
+>>> ram_obj = Contact.objects.get(pk=2)
+>>> ram_obj
+<Contact: Contact object (2)>
+>>> ram_obj.name
+'ram'
+
+>>> #lets update email
+>>> ram_obj.email = "ramps@gmail.com"
+>>> ram_obj.save()   # update contact sysntax
+>>> ram_obj = Contact.objects.get(pk=2) # lets relaod from db
+>>> ram_obj.email
+'ramps@gmail.com'
+
+>>> # lets update location
+>>> ram_obj.location = "Bangalore"
+>>> ram_obj.save()
+
+>>> ram_obj = Contact.objects.get(pk=2) # lets reload from db
+>>> ram_obj.location
+'Bangalore'
+>>> ram_obj.location
+'Bangalore'
+>>>
+>>>
+>>>
+>>>
+>>> # lets delete yeswant
+>>> yes_obj = Contact.objects.get(pk=1)
+>>> yes_obj.name
+'yeswant'
+>>> yes_obj.delete()  # delete sql statement
+(1, {'contact.Contact': 1})
+>>>
+
+
+
+
 
 
 
