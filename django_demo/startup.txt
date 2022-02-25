@@ -213,8 +213,79 @@ Type "help", "copyright", "credits" or "license" for more information.
 >>> yes_obj.delete()  # delete sql statement
 (1, {'contact.Contact': 1})
 >>>
+-----------------------------------------------------------
+
+lets create an url and views in django
+
+url --> path to access resources in server
+
+url --> view functions
+
+ex:
+
+/contact/create  --> view function(python)
+
+view -->python function,  will invoke by django when requested url matches
+
+step #1:
+# urls.py file in app directory
+
+from django.urls import path
+from .views import index
+
+urlpatterns = [
+    path('index/', index),
+]
+------------------------------------------
+
+step #2: create view function
+
+from django.shortcuts import render, HttpResponse
+
+# Create your views here.
+
+def index(request):
+    # keep
+    return HttpResponse("Response coming from index view")
+
+---------------------------------------------------
+
+step #2: include app urls.py file in project urls.py
+
+project urls.py
+--------------
+from django.contrib import admin
+from django.urls import path, include
+
+urlpatterns = [
+    path('admin/', admin.site.urls),
+    path('contact/', include('contact.urls'))
+]
 
 
+# how do access index view functionality
+
+url: http://127.0.0.1:8000/admin
+     http://127.0.0.1:8000/contact/index
+     http://127.0.0.1:8000/contact/get-contacts
+
+note: every url having map to view function
+----------------------------------------------
+
+
+
+# contact use case:
+------------------
+html(UI) --> for taking input from the user
+url --> to handle contact creation request
+view function to handle the request
+
+
+# lets create url  and view
+
+url: http://127.0.0.1:8000/contact/create
+http method : GET
+http method : POST
 
 
 
