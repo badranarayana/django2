@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>list contacts</title>
+    <style>
+    table {
+            font-family: arial, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+    }
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
+</style>
+
+</head>
+<body>
+<h1> List of contacts in system</h1>
+<table>
+    <tr>
+    <td> Name</td>
+    <td> Mobile Number</td>
+    <td> Date Of Birth</td>
+    <td> Email</td>
+    <td> Location</td>
+    </tr>
+
+    {% for contact in contacts %}
+       <tr>
+           <td> {{contact.name }}</td>
+            <td> {{contact.mobile_number }}</td>
+           <td> {{contact.date_of_birth }}</td>
+            <td> {{contact.email }}</td>
+            <td> {{contact.location }}</td>
+       </tr>
+    {% endfor %}
+</table>
+</body>
+</html>

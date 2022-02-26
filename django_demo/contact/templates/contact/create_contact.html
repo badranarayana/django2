@@ -5,16 +5,32 @@
     <title>Create Contact</title>
 </head>
 <body>
-
-<h1> the is a create contact form</h1>
-<table>
+<div style="align-text:center">
+<h1> Create Contact</h1>
+<form  method="POST">
+    {% csrf_token %}
+<table border="1">
     <tr>
         <td> Name: </td> <td> <input type="text" id="name" name="name"> </td>
     </tr>
     <tr>
         <td> Mobile Number: </td> <td> <input type="text" id="mnumber" name="mnumber"> </td>
     </tr>
+    <tr>
+        <td> Date Of Birth: </td> <td> <input type="date" id="dob" name="dob"> </td>
+    </tr>
+    <tr>
+        <td> Email: </td> <td> <input type="email" id="email" name="email"> </td>
+    </tr>
+    <tr>
+        <td> Location: </td> <td> <input type="text" id="location" name="location"> </td>
+    </tr>
+     <tr>
+        <td> </td> <td> <button type="submit"> Save </button> </td>
+    </tr>
 </table>
 
+</form>
+</div>
 </body>
 </html>

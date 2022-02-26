@@ -287,6 +287,47 @@ url: http://127.0.0.1:8000/contact/create
 http method : GET
 http method : POST
 
+-------------------------------------------------
+Django templates:
+# django templates(html) is used to render the dynamic data(db data) in html document
+# we can write python code within html template with help of django template syntax
+
+# python code examples in django template
+
+# for
+{% for name in data %}
+ <p> Hello, {{ name }} </p>
+{% endfor %}
+
+
+# if
+{% if emp_salary > 20 %}
+  <b> eligible for hike <b>
+{% elif emp_salary == 15 %}
+  <b> No eligiblity or hike </b>
+{% endif %}
+
+# {{ }}  --> to display content of variable in html
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
