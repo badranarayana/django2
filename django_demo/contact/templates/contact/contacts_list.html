@@ -1,7 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
+{% extends 'contact/base.html' %}
+
+
+{% block headers %}
     <title>list contacts</title>
     <style>
     table {
@@ -21,8 +21,10 @@ tr:nth-child(even) {
 }
 </style>
 
-</head>
-<body>
+{% endblock %}
+
+
+{% block content %}
 <h1> List of contacts in system</h1>
 <table>
     <tr>
@@ -35,13 +37,20 @@ tr:nth-child(even) {
 
     {% for contact in contacts %}
        <tr>
-           <td> {{contact.name }}</td>
+           <td> {{contact.name |upper }}</td>
             <td> {{contact.mobile_number }}</td>
-           <td> {{contact.date_of_birth }}</td>
-            <td> {{contact.email }}</td>
+           <td> {{contact.date_of_birth |date:'d-m-Y' }}</td>
+            <td> {{contact.email|lower }}</td>
             <td> {{contact.location }}</td>
        </tr>
     {% endfor %}
 </table>
-</body>
-</html>
+{% endblock %}
+
+
+
+{% block contact %}
+
+<b> location: Bangalore</b>
+
+{% endblock %}
