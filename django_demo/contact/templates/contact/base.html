@@ -1,14 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+    {% load static %}
     <meta charset="UTF-8">
         {% block headers %}
         Base page
         {% endblock %}
+
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <script  src="{% static 'js/contact.js' %}"></script>
 </head>
 <body>
 
-<b> template inheritance</b>
+<p> template inheritance</p>
+<img src="{% static 'images/nature_img.jpeg' %}">
+
+<button onclick="showMessage();"> Click Me</button>
 
 {% block content %}
 

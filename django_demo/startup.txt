@@ -309,7 +309,37 @@ Django templates:
 
 # {{ }}  --> to display content of variable in html
 
+# template inheritance(extending)
 
+# template tags and filters
+-------------------------------------------------
+
+
+# how do we refer url paths in templates?
+{% url 'urlname' %}
+
+ex: <a href="{% url 'create-contact' %}"> Create Contact</a>
+
+
+# how to configure static file in django?
+
+1) update settings.py
+#Location of static files
+STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static'), ]
+
+can access with static url prefix
+http://127.0.0.1:8000/static/css/style.css
+
+
+
+# how do refer/load static files in templates?
+
+reference: https://djangocentral.com/static-assets-in-django/#:~:text=1%20Configuring%20Static%20Files%20in%20Django.%20In%20settings.py,%25%7D%20template%20filer%20to%20include%20different%20static%20assets.
+
+{% load static % }
+<link rel="stylesheet" href="{% static 'css/style.css' %}">
+<script  src="{% static 'js/contact.js' %}"></script>
+<img src="{% static 'images/nature_img.jpeg' %}">
 
 
 

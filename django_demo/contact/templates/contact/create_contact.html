@@ -8,6 +8,7 @@
 
 <div style="align-text:center">
 <h1> Create Contact</h1>
+    <a href="{% url 'get-contacts' %}"> List Contact</a>
 <form  method="POST">
     {% csrf_token %}
 <table border="1">

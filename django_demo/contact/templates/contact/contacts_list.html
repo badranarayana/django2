@@ -26,6 +26,8 @@ tr:nth-child(even) {
 
 {% block content %}
 <h1> List of contacts in system</h1>
+<a href="{% url 'create-contact' %}"> Create Contact</a>
+<br>
 <table>
     <tr>
     <td> Name</td>
