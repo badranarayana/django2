@@ -1,5 +1,6 @@
 from django.shortcuts import render, HttpResponse, redirect
 from .models import Contact
+from .forms import ContactModelForm
 
 # Create your views here.
 
@@ -20,7 +21,11 @@ def get_contact(request):
 
 def create_contact(request):
     if request.method == 'GET':
-        return render(request, template_name='contact/create_contact.html')
+        # empty form
+        form = ContactModelForm()
+
+        return render(request, template_name='contact/create_contact.html',
+                      context={'form': form})
     elif request.method == 'POST':
         """
         (Pdb) request.POST
@@ -29,19 +34,30 @@ def create_contact(request):
         
         """
         # capturing user entered data on UI
-        name = request.POST['name']
-        mobile_number = request.POST['mnumber']
-        date_of_birth = request.POST['dob']
-        email = request.POST['email']
-        location = request.POST['location']
-
-        contact_obj = Contact(name=name, mobile_number=mobile_number,
-                              date_of_birth=date_of_birth, email=email, location=location)
+        # name = request.POST['name']
+        # mobile_number = request.POST['mnumber']
+        # date_of_birth = request.POST['dob']
+        # email = request.POST['email']
+        # location = request.POST['location']
+        #
+        # contact_obj = Contact(name=name, mobile_number=mobile_number,
+        #                       date_of_birth=date_of_birth, email=email, location=location)
 
         # save the data into db
-        contact_obj.save()
+        #contact_obj.save()
 
         #print(name, mobile_number, date_of_birth, email, location)
+
+
+        # bounded form
+        form = ContactModelForm(request.POST)
+
+        # we should validate before saving to db
+        if form.is_valid(): # it return true if all validations passed
+            form.save()
+        else:
+            return render(request, template_name='contact/create_contact.html',
+                          context={'form': form})
 
         return redirect(to='get-contacts')
 

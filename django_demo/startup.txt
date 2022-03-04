@@ -344,6 +344,72 @@ reference: https://djangocentral.com/static-assets-in-django/#:~:text=1%20Config
 
 
 
+# django forms
+ --> forms(need to define all fields that you want to generate html)
+ --> model forms(field will automaticaly generated form model class)
+
+
+ ---> form is python class
+ ---> each field of form will generate html control
+ ---> can add server side validation for every form field
+
+ form validation:
+ https://www.brennantymrak.com/articles/django-custom-form-validation.html#:~:text=To%20add%20validation%20for%20a%20single%20field%20a,field%20data%20whether%20is%20it%20modified%20or%20not.
+
+form: https://www.webforefront.com/django/formtemplatelayout.html#:~:text=Django%20forms%20offer%20three%20helper%20methods%20to%20simplify,HTML%20%3Cp%3E%20tags%20as%20illustrated%20in%20listing%206-21.
+
+
+# process to add forms
+
+1) create form.py
+2) create model form or normal form
+
+3) add clean methods for validation
+
+4) import form class into views.py
+
+5) render empty form object for get request
+
+6) bound user entered data into form
+
+7) validate form(all clean methods will execute, is_valid())
+
+8) save data if validation successfull
+
+9) show error and render bounded form into html template(we won't lose user enter data)
+
+
+
+
+
+
+
+
+
+
+
+
+
+# django middle wares
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
