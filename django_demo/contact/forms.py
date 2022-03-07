@@ -39,6 +39,40 @@ class ContactModelForm(forms.ModelForm):
         return mobile_number
 
 
+class ContactForm(forms.Form):
+    # ('name', 'mobile_number', 'date_of_birth', 'email', 'location')
+    name = forms.CharField(max_length=50, required=True)
+    mobile_number = forms.CharField(max_length=10, required=True)
+    date_of_birth = forms.DateField(required=True)
+    email = forms.EmailField(required=True)
+    location = forms.CharField(max_length=50, required=True)
+
+    def clean_email(self):
+        # Get the user submitted word from the cleaned_data dictionary
+        email = self.cleaned_data["email"]
+
+        domain = email.split('@')[1]
+        if domain != 'wipro.com':
+            raise forms.ValidationError("Please enter the wipro email ID")
+        # Return data even though it was not modified
+        return email
+
+    def clean_mobile_number(self):
+        # Get the user submitted word from the cleaned_data dictionary
+        mobile_number = self.cleaned_data["mobile_number"]
+        # validation len shoulb be 10
+        char_len = len(mobile_number)
+        if char_len < 10:
+            raise forms.ValidationError("Please enter valid mobile number")
+
+        if char_len > 10:
+            raise forms.ValidationError("Please enter valid mobile number")
+
+        return mobile_number
+
+
+
+
 
 
 

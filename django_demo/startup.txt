@@ -378,21 +378,22 @@ form: https://www.webforefront.com/django/formtemplatelayout.html#:~:text=Django
 
 9) show error and render bounded form into html template(we won't lose user enter data)
 
-
-
-
-
-
-
-
-
-
-
-
-
 # django middle wares
 
 
+
+
+
+Django forms:
+1) Normal forms
+   class myform(forms.Form)
+       pass
+
+2) model form
+   class MyModelForm(forms.ModelForm):
+        class Meta:
+           model = Model_name
+           filed_names = ()
 
 
 
